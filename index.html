@@ -13,7 +13,7 @@
       padding: 0;
       background-color: var(--ddd-accent-1);
     }
-    #demo {
+    #app {
       margin: var(--ddd-spacing-2);
     }
     sustainable-goals {
@@ -34,16 +34,40 @@
 </head>
 
 <body>
-  <div id="demo">
-    <h1>sustainable-goals</h1>
-    <!-- this is going to do whatever the tag's defaults are -->
-    <h2>Default</h2>
-    <sustainable-goals></sustainable-goals>
-    <h2>Slot usage</h2>
-    <sustainable-goals data-accent="2" data-primary="17"><div>Sample slot content</div></sustainable-goals>
-    <h2>Property usage</h2>
-    <sustainable-goals id="example" title="Sample property title"></sustainable-goals>
-  </div>
+  <div id="app"></div>
+    <button>Change Goal</button>
+
+    <script>
+      const app = document.querySelector('#app');
+      // Create all 17 goals + circle and "all"
+      for (let i = 1; i <= 17; i++) {
+        const sdg = document.createElement('sustainable-goals');
+        sdg.goal = i.toString();
+        app.appendChild(sdg);
+      }
+
+      const circleSDG = document.createElement('sustainable-goals');
+      circleSDG.goal = 'circle';
+      app.appendChild(circleSDG);
+
+      const allSDG = document.createElement('sustainable-goals');
+      allSDG.goal = 'all';
+      app.appendChild(allSDG);
+
+      // Demonstrate color-only option
+      const colorOnlySDG = document.createElement('sustainable-goals');
+      colorOnlySDG.goal = '1';
+      colorOnlySDG.colorOnly = true;
+      app.appendChild(colorOnlySDG);
+
+      // Add a button to change the goal of the first element
+      const changeGoalButton = document.querySelector('button');
+      changeGoalButton.addEventListener('click', () => {
+        const lastSDG = app.querySelector('sustainable-goals:last-child');
+        const randomGoal = Math.floor(Math.random() * 17) + 1;
+        lastSDG.goal = randomGoal.toString();
+      });
+    </script>
   <script type="module" src="./src/sustainable-goals.js"></script>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->

@@ -79,14 +79,52 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       }
     `];
   }
+  updated(changedProperties) {
+    if (changedProperties.has('goal')) {
+      this.updateGoalImage();
+    }
+  }
+
+  updateGoalImage() {
+    if (this.goal === 'all' || this.goal === 'circle') {
+      this._currentSrc = new URL(
+        `./lib/svgs/goal${this.goal}.svg`,
+        import.meta.url
+      ).href;
+      this.alt =
+        this.goal === 'all'
+          ? 'All Sustainable Development Goals'
+          : 'Sustainable Development Goals Circle';
+    } else {
+      const goalNumber = parseInt(this.goal);
+      if (goalNumber >= 1 && goalNumber <= 17) {
+        this._currentSrc = new URL(
+          `./lib/svgs/goal-${goalNumber}.svg`,
+          import.meta.url
+        ).href;
+        this.alt = `Goal ${goalNumber}: ${goalData[goalNumber - 1].name}`;
+      }
+    }
+  }
 
   render() {
+    if (this.colorOnly) {
+      const goalNumber = parseInt(this.goal);
+      if (goalNumber >= 1 && goalNumber <= 17) {
+        const color = goalData[goalNumber - 1].color;
+        return html`<div class="color-only" style="background-color: ${color};"></div>`;
+      }
+    }
+
     return html`
-<div class="wrapper">
-  <div>${this.title}</div>
-  <slot></slot>
-</div>`;
+    <img
+      src="${this._currentSrc}"
+      alt="${this.label || this.alt}"
+      loading="lazy"
+      fetchpriority="low"
+    />`;
   }
+
 
   /**
    * haxProperties integration via file reference
