@@ -4,7 +4,7 @@ const goalData = [
   {
     name: 'No Poverty',
     color: '#e5243b',
-    image: new URL('../lib/svgs/goal-1.svg', import.meta.url).href,
+    image: new URL('../lib/svgs/goal1.svg', import.meta.url).href,
   },
   { name: 'Zero Hunger', color: '#dda63a' },
   { name: 'Good Health and Well-being', color: '#4c9f38' },
@@ -54,30 +54,22 @@ export class sustainableGoals extends DDDSuper(LitElement) {
   }
 
   static get styles() {
-    return [super.styles,
-    css`
+    return css`
       :host {
-        display: block;
-        color: var(--ddd-theme-primary);
-        background-color: white;
+        display: inline-block;
         width: 254px;
         height: 254px;
-        font-family: var(--ddd-font-navigation);
-        font-size: var(--sustainable-goals-font-size, var(--ddd-font-size-s));
       }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
-      div {
-        padding: 0;
-        margin: 0;
+      .color-only {
+        width: 100%;
+        height: 100%;
       }
-      .color-only{
-        width:100%;
-        height:100%;
-      }
-    `];
+    `;
   }
   updated(changedProperties) {
     if (changedProperties.has('goal')) {
@@ -99,7 +91,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       const goalNumber = parseInt(this.goal);
       if (goalNumber >= 1 && goalNumber <= 17) {
         this._currentSrc = new URL(
-          `./lib/svgs/goal-${goalNumber}.svg`,
+          `./lib/svgs/goal${goalNumber}.svg`,
           import.meta.url
         ).href;
         this.alt = `Goal ${goalNumber}: ${goalData[goalNumber - 1].name}`;
