@@ -52,7 +52,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
 
     };
   }
-
+/*This defines the styles for the images, color box, and the page as a whole */
   static get styles() {
     return css`
       :host {
@@ -63,7 +63,6 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
       }
       .color-only {
         width: 100%;
@@ -71,13 +70,15 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       }
     `;
   }
+  /*This method updates the properties such as color only if the changed properties string has goal in it*/
   updated(changedProperties) {
     if (changedProperties.has('goal')) {
       this.updateGoalImage();
     }
   }
-
+/*This method activates only if the updated method's parameter has goal in it*/ 
   updateGoalImage() {
+    /*Only activates if the goal has all or circle in it, so only for those two cases */
     if (this.goal === 'all' || this.goal === 'circle') {
       this._currentSrc = new URL(
         `./lib/svgs/goal${this.goal}.svg`,
@@ -87,7 +88,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
         this.goal === 'all'
           ? 'All Sustainable Development Goals'
           : 'Sustainable Development Goals Circle';
-    } else {
+    } else {/* This is for goals 1-17*/
       const goalNumber = parseInt(this.goal);
       if (goalNumber >= 1 && goalNumber <= 17) {
         this._currentSrc = new URL(
@@ -99,7 +100,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     }
   }
 
-  render() {
+  render() {/*This activates only if the colorOnly is set as true causing the color box to appear */
     if (this.colorOnly) {
       const goalNumber = parseInt(this.goal);
       if (goalNumber >= 1 && goalNumber <= 17) {
@@ -107,7 +108,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
         return html`<div class="color-only" style="background-color: ${color};"></div>`;
       }
     }
-
+/*This renders the page-allows the images to appear and allows for alt text loading is set as lazy and fetch priority as low */
     return html`
     <img
       src="${this._currentSrc}"

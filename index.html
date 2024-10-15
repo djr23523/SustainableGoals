@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Demonstration for sustainable-goals">
-
+  <script type="module" src="./src/sustainable-goals.js"></script>
   <style>
     :root, html, body {
       margin: 0;
@@ -35,7 +35,7 @@
 
 <body>
   <div id="app"></div>
-    <button>Change Goal</button>
+    <button id="Change-Goals">Change Goal</button>
 
     <script>
       const app = document.querySelector('#app');
@@ -61,14 +61,14 @@
       app.appendChild(colorOnlySDG);
 
       // Add a button to change the goal of the first element
-      const changeGoalButton = document.querySelector('button');
+      const changeGoalButton = document.querySelector('#Change-Goals');
       changeGoalButton.addEventListener('click', () => {
         const lastSDG = app.querySelector('sustainable-goals:last-child');
         const randomGoal = Math.floor(Math.random() * 17) + 1;
         lastSDG.goal = randomGoal.toString();
       });
     </script>
-  <script type="module" src="./src/sustainable-goals.js"></script>
+  
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
   <style>
