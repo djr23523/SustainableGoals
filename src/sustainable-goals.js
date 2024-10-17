@@ -116,8 +116,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       loading="lazy"
       fetchpriority="low"
     />`;
-  }hello
-
+  }
 
   /**
    * haxProperties integration via file reference

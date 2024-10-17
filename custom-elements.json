@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/sustainable-goals.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "sustainableGoals",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "updateGoalImage"
+            },
+            {
+              "kind": "field",
+              "name": "hello"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference"
+            },
+            {
+              "kind": "field",
+              "name": "goals",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"1\"",
+              "privacy": "public",
+              "attribute": "goals",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "privacy": "public",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "colorOnly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "color-only",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_currentSrc",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "privacy": "public",
+              "attribute": "_currentSrc"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"lazy\"",
+              "privacy": "public",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "fetchpriority",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"low\"",
+              "privacy": "public",
+              "attribute": "fetchpriority"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "goals",
+              "fieldName": "goals"
+            },
+            {
+              "name": "color-only",
+              "fieldName": "colorOnly"
+            },
+            {
+              "name": "label",
+              "fieldName": "label"
+            },
+            {
+              "name": "_currentSrc",
+              "fieldName": "_currentSrc"
+            },
+            {
+              "name": "loading",
+              "fieldName": "loading"
+            },
+            {
+              "name": "fetchpriority",
+              "fieldName": "fetchpriority"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "sustainableGoals",
+          "declaration": {
+            "name": "sustainableGoals",
+            "module": "src/sustainable-goals.js"
+          }
+        }
+      ]
+    }
+  ]
+}
