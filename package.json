@@ -21,7 +21,8 @@
     "dependencies": {
         "@haxtheweb/d-d-d": "^9.0.5",
         "lit": "^3.1.4",
-        "package.json": "^2.0.1"
+        "package.json": "^2.0.1",
+        "rollup-plugin-copy": "^3.5.0"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.16.4",
