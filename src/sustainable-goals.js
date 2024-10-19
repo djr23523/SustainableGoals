@@ -36,7 +36,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     this.label="";
     this.alt=null;
     this.colorOnly=false;
-    this._currentSrc=null;
+    this._imgsrc=null;
     this.loading="lazy";
     this.fetchpriority="low";
   }
@@ -46,7 +46,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       goals: {type: String, reflect: true},
       colorOnly: {type: Boolean, attribute: "color-only", reflect: true},
       label: {type:String},
-      _currentSrc: { type: String },
+      _imgsrc: { type: String },
       loading: {type: String},
       fetchpriority: {type: String}
 
@@ -79,20 +79,33 @@ export class sustainableGoals extends DDDSuper(LitElement) {
 /*This method activates only if the updated method's parameter has goal in it*/ 
   updateGoalImage() {
     /*Only activates if the goal has all or circle in it, so only for those two cases */
-    if (this.goal === 'all' || this.goal === 'circle') {
-      this._currentSrc = new URL(
-        `./lib/svgs/goal${this.goal}.svg`,
+    if (this.goal === 'all') {
+      this._imgsrc = new URL(
+        `../lib/svgs/goal${this.goal}.svg`,
         import.meta.url
       ).href;
       this.alt =
         this.goal === 'all'
           ? 'All Sustainable Development Goals'
           : 'Sustainable Development Goals Circle';
-    } else {/* This is for goals 1-17*/
+    
+    } 
+    else if(this.goal==='circle'){
+      this._imgsrc = new URL(
+        `../lib/svgs/circle.png`,
+        import.meta.url
+      ).href;
+      this.alt =
+        this.goal === 'circle'
+          ? 'All Sustainable Development Goals'
+          : 'Sustainable Development Goals Circle';
+    
+    }
+    else {/* This is for goals 1-17*/
       const goalNumber = parseInt(this.goal);
       if (goalNumber >= 1 && goalNumber <= 17) {
-        this._currentSrc = new URL(
-          `./lib/svgs/goal${goalNumber}.svg`,
+        this._imgsrc = new URL(
+          `../lib/svgs/goal${goalNumber}.svg`,
           import.meta.url
         ).href;
         this.alt = `Goal ${goalNumber}: ${goalData[goalNumber - 1].name}`;
@@ -108,10 +121,15 @@ export class sustainableGoals extends DDDSuper(LitElement) {
         return html`<div class="color-only" style="background-color: ${color};"></div>`;
       }
     }
+    this._imgsrc = new URL(
+      `../lib/svgs/goal${goalNumber}.svg`,
+      import.meta.url
+    ).href;
+    this.alt=`Goal ${goalNumber}: ${goalData[goalNumber - 1].name}`;
 /*This renders the page-allows the images to appear and allows for alt text loading is set as lazy and fetch priority as low */
     return html`
     <img
-      src="${this._currentSrc}"
+      src="${this._imgsrc}"
       alt="${this.label || this.alt}"
       loading="lazy"
       fetchpriority="low"
@@ -122,7 +140,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+    return new URL(`../lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }
 }
