@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-new URL(`../lib/svgs/goal${this.goal}.svg`,import.meta.url).href
+new URL(`../lib/svgs/goal1.svg`,import.meta.url).href
 
 const goalData = [
   {
@@ -38,7 +38,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     this.label="";
     this.alt=null;
     this.colorOnly=false;
-    this._imgsrc=null;
+    this._imgsrc= new URL(`../lib/svgs/goal1.svg`,import.meta.url).href;
     this.loading="lazy";
     this.fetchpriority="low";
   }
@@ -78,21 +78,28 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       this.updateGoalImage();
     }
   }
+  getColor(){
+    const goalNumber = parseInt(this.goal);
+    if (goalNumber >= 1 && goalNumber <= 17) {
+      const color = goalData[goalNumber - 1].color;
+      return html`<div class="color-only" style="background-color: ${color};"></div>`;
+    }
+  }
 /*This method activates only if the updated method's parameter has goal in it*/ 
   updateGoalImage() {
     /*Only activates if the goal has all or circle in it, so only for those two cases */
-    if (this.goal === 'all') {
+    if (this.goals === 'all') {
       this._imgsrc = new URL(
         `../lib/svgs/goal${this.goal}.svg`,
         import.meta.url
       ).href;
       this.alt =
-        this.goal === 'all'
+        this.goals === 'all'
           ? 'All Sustainable Development Goals'
           : 'Sustainable Development Goals Circle';
     
     } 
-    else if(this.goal==='circle'){
+    else if(this.goals==='circle'){
       this._imgsrc = new URL(
         `../lib/svgs/circle.png`,
         import.meta.url
@@ -104,7 +111,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     
     }
     else {/* This is for goals 1-17*/
-      const goalNumber = parseInt(this.goal);
+      const goalNumber = parseInt(this.goals);
       if (goalNumber >= 1 && goalNumber <= 17) {
         this._imgsrc = new URL(
           `../lib/svgs/goal${goalNumber}.svg`,
@@ -117,14 +124,12 @@ export class sustainableGoals extends DDDSuper(LitElement) {
 
   render() {/*This activates only if the colorOnly is set as true causing the color box to appear */
     if (this.colorOnly) {
-      const goalNumber = parseInt(this.goal);
-      if (goalNumber >= 1 && goalNumber <= 17) {
-        const color = goalData[goalNumber - 1].color;
-        return html`<div class="color-only" style="background-color: ${color};"></div>`;
-      }
+      getColor()
+      
     }
+    
     this._imgsrc = new URL(
-      `../lib/svgs/goal${goalNumber}.svg`,
+      `../lib/svgs/goal${this.goals}.svg`,
       import.meta.url
     ).href;
     this.alt=`Goal ${goalNumber}: ${goalData[goalNumber - 1].name}`;

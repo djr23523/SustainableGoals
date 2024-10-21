@@ -29,6 +29,10 @@
       background-color: var(--ddd-accent-2);
       color: var(--ddd-primary-17);
     }
+    .sg-wrapper{
+      display:flex;
+      flex-wrap: wrap;
+    }
   </style>
   <title>sustainable-goals</title>
 </head>
@@ -36,35 +40,26 @@
 <body>
   <div id="app"></div>
     <button id="Change-Goals">Change Goal</button>
-    <sustainable-goals goal="1" ></sustainable-goals>
-    <sustainable-goals goal = "2"></sustainable-goals>
-    <sustainable-goals goal="3"></sustainable-goals>
-    <sustainable-goals goal="4"></sustainable-goals>
-    <sustainable-goals goal="5"></sustainable-goals>
-    <sustainable-goals goal="6"></sustainable-goals>
-    <sustainable-goals goal="7"></sustainable-goals>
-    <sustainable-goals goal="8"></sustainable-goals>
-    <sustainable-goals goal="9"></sustainable-goals>
-    <sustainable-goals goal="10"></sustainable-goals>
-    <sustainable-goals goal="11"></sustainable-goals>
-    <sustainable-goals goal="12"></sustainable-goals>
-    <sustainable-goals goal="13"></sustainable-goals>
-    <sustainable-goals goal="14"></sustainable-goals>
-    <sustainable-goals goal="15"></sustainable-goals>
-    <sustainable-goals goal="16"></sustainable-goals>
-    <sustainable-goals goal="17"></sustainable-goals>
-    <script>
-      
 
-      // Add a button to change the goal of the first element
-      const changeGoalButton = document.querySelector('#Change-Goals');
-      changeGoalButton.addEventListener('click', () => {
-        const lastSDG = app.querySelector('sustainable-goals:last-child');
-        const randomGoal = Math.floor(Math.random() * 17) + 1;
-        lastSDG.goal = randomGoal.toString();
-      });
-    </script>
-  
+  <div class="sg-wrapper">
+    <sustainable-goals goals="1" ></sustainable-goals>
+    <sustainable-goals goals = "2"></sustainable-goals>
+    <sustainable-goals goals="3"></sustainable-goals>
+    <sustainable-goals goals="4"></sustainable-goals>
+    <sustainable-goals goals="5"></sustainable-goals>
+    <sustainable-goals goals="6"></sustainable-goals>
+    <sustainable-goals goals="7"></sustainable-goals>
+    <sustainable-goals goals="8"></sustainable-goals>
+    <sustainable-goals goals="9"></sustainable-goals>
+    <sustainable-goals goals="10"></sustainable-goals>
+    <sustainable-goals goals="11"></sustainable-goals>
+    <sustainable-goals goals="12"></sustainable-goals>
+    <sustainable-goals goals="13"></sustainable-goals>
+    <sustainable-goals goals="14"></sustainable-goals>
+    <sustainable-goals goals="15"></sustainable-goals>
+    <sustainable-goals goals="16"></sustainable-goals>
+    <sustainable-goals goals="17"></sustainable-goals>
+  </div>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
   <style>
