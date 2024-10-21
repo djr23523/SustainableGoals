@@ -18,17 +18,16 @@
             },
             {
               "kind": "method",
+              "name": "getColor"
+            },
+            {
+              "kind": "method",
               "name": "updateGoalImage"
             },
             {
               "kind": "field",
-              "name": "hello"
-            },
-            {
-              "kind": "field",
               "name": "haxProperties",
-              "static": true,
-              "description": "haxProperties integration via file reference"
+              "static": true
             },
             {
               "kind": "field",
@@ -53,14 +52,6 @@
             },
             {
               "kind": "field",
-              "name": "alt",
-              "type": {
-                "text": "null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
               "name": "colorOnly",
               "type": {
                 "text": "boolean"
@@ -69,16 +60,6 @@
               "privacy": "public",
               "attribute": "color-only",
               "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "_currentSrc",
-              "type": {
-                "text": "null"
-              },
-              "default": "null",
-              "privacy": "public",
-              "attribute": "_currentSrc"
             },
             {
               "kind": "field",
@@ -113,10 +94,6 @@
             {
               "name": "label",
               "fieldName": "label"
-            },
-            {
-              "name": "_currentSrc",
-              "fieldName": "_currentSrc"
             },
             {
               "name": "loading",
