@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+new URL(`../lib/svgs/goal${this.goal}.svg`,import.meta.url).href
+
 const goalData = [
   {
     name: 'No Poverty',
