@@ -1,30 +1,9 @@
+
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-new URL(`../lib/svgs/goal1.svg`,import.meta.url).href
 
-const goalData = [
-  {
-    name: 'No Poverty',
-    color: '#e5243b',
-    image: new URL('../lib/svgs/goal1.svg', import.meta.url).href,
-  },
-  { name: 'Zero Hunger', color: '#dda63a' },
-  { name: 'Good Health and Well-being', color: '#4c9f38' },
-  { name: 'Quality Education', color: '#c5192d' },
-  { name: 'Gender Equality', color: '#ff3a21' },
-  { name: 'Clean Water and Sanitation', color: '#26bde2' },
-  { name: 'Affordable and Clean Energy', color: '#fcc30b' },
-  { name: 'Decent Work and Economic Growth', color: '#a21942' },
-  { name: 'Industry, Innovation and Infrastructure', color: '#fd6925' },
-  { name: 'Reduced Inequalities', color: '#dd1367' },
-  { name: 'Sustainable Cities and Communities', color: '#fd9d24' },
-  { name: 'Responsible Consumption and Production', color: '#bf8b2e' },
-  { name: 'Climate Action', color: '#3f7e44' },
-  { name: 'Life Below Water', color: '#0a97d9' },
-  { name: 'Life on Land', color: '#56c02b' },
-  { name: 'Peace, Justice and Strong Institutions', color: '#00689d' },
-  { name: 'Partnerships for the Goals', color: '#19486a' },
-];
+
+
 
 export class sustainableGoals extends DDDSuper(LitElement) {
 
@@ -36,9 +15,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     super();
     this.goals="1";
     this.label="";
-    this.alt=null;
     this.colorOnly=false;
-    this._imgsrc= new URL(`../lib/svgs/goal1.svg`,import.meta.url).href;
     this.loading="lazy";
     this.fetchpriority="low";
   }
@@ -48,17 +25,34 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       goals: {type: String, reflect: true},
       colorOnly: {type: Boolean, attribute: "color-only", reflect: true},
       label: {type:String},
-      _imgsrc: { type: String },
       loading: {type: String},
       fetchpriority: {type: String}
 
     };
   }
-/*This defines the styles for the images, color box, and the page as a whole */
+//This defines the styles for the images, color box, and the page as a whole 
   static get styles() {
     return css`
       :host {
-        display: inline-block;
+        --sg-goals-1: rgb(235, 28, 44);
+        --sg-goals-2: rgb(210, 160, 42);
+        --sg-goals-3: rgb(44, 155, 72);
+        --sg-goals-4: rgb(194, 31, 51);
+        --sg-goals-5: rgb(239, 64, 42);
+        --sg-goals-6: rgb(0, 173, 216);
+        --sg-goals-7: rgb(253, 183, 19);
+        --sg-goals-8: rgb(143, 23, 55);
+        --sg-goals-9: rgb(243, 109, 36);
+        --sg-goals-10: rgb(224, 21, 131);
+        --sg-goals-11: rgb(249, 157, 37);
+        --sg-goals-12: rgb(207, 141, 42);
+        --sg-goals-13: rgb(72, 119, 61);
+        --sg-goals-14: rgb(0, 125, 187);
+        --sg-goals-15: rgb(63, 175, 73);
+        --sg-goals-16: rgb(1, 85, 138);
+        --sg-goals-17: rgb(25, 54, 103);
+    
+        display: block;
         width: 254px;
         height: 254px;
       }
@@ -66,86 +60,115 @@ export class sustainableGoals extends DDDSuper(LitElement) {
         width: 100%;
         height: 100%;
       }
-      .color-only {
-        width: 100%;
-        height: 100%;
+      .color-only{
+
+        width: 254px;
+        height: 254px;
+        
       }
     `;
   }
-  /*This method updates the properties such as color only if the changed properties string has goal in it*/
+  //This method updates the properties such as color only if the changed properties string has goal in it
   updated(changedProperties) {
-    if (changedProperties.has('goal')) {
+    if (changedProperties.has('goals')) {
       this.updateGoalImage();
     }
   }
   getColor(){
-    const goalNumber = parseInt(this.goal);
+    const goalNumber = parseInt(this.goals);
     if (goalNumber >= 1 && goalNumber <= 17) {
       const color = goalData[goalNumber - 1].color;
-      return html`<div class="color-only" style="background-color: ${color};"></div>`;
+      return color;
     }
   }
-/*This method activates only if the updated method's parameter has goal in it*/ 
+//This method activates only if the updated method's parameter has goal in it 
   updateGoalImage() {
-    /*Only activates if the goal has all or circle in it, so only for those two cases */
+    //Only activates if the goal has all or circle in it, so only for those two cases 
+    const goalData = [
+      'No Poverty',
+      'Zero Hunger',
+      'Good Health and Well-being',
+      'Quality Education',
+      'Gender Equality',
+      'Clean Water and Sanitation',
+      'Affordable and Clean Energy',
+      'Decent Work and Economic Growth',
+      'Industry, Innovation and Infrastructure',
+      'Reduced Inequalities',
+      'Sustainable Cities and Communities',
+      'Responsible Consumption and Production',
+      'Climate Action',
+      'Life Below Water',
+      'Life on Land',
+      'Peace, Justice and Strong Institutions',
+      'Partnerships for the Goals',
+    ];
     if (this.goals === 'all') {
-      this._imgsrc = new URL(
-        `../lib/svgs/goal${this.goal}.svg`,
+      let _imgsrc = new URL(
+        `../lib/svgs/goal${this.goals}.svg`,
         import.meta.url
       ).href;
-      this.alt =
+      this.label =
         this.goals === 'all'
           ? 'All Sustainable Development Goals'
           : 'Sustainable Development Goals Circle';
     
     } 
     else if(this.goals==='circle'){
-      this._imgsrc = new URL(
+      _imgsrc = new URL(
         `../lib/svgs/circle.png`,
         import.meta.url
       ).href;
-      this.alt =
-        this.goal === 'circle'
-          ? 'All Sustainable Development Goals'
-          : 'Sustainable Development Goals Circle';
+      this.label =
+        this.goals === 'circle'
+          ? 'All Sustainable Development goalss'
+          : 'Sustainable Development goalss Circle';
     
     }
-    else {/* This is for goals 1-17*/
+    else {// This is for goals 1-17
       const goalNumber = parseInt(this.goals);
       if (goalNumber >= 1 && goalNumber <= 17) {
-        this._imgsrc = new URL(
+        _imgsrc = new URL(
           `../lib/svgs/goal${goalNumber}.svg`,
           import.meta.url
         ).href;
-        this.alt = `Goal ${goalNumber}: ${goalData[goalNumber - 1].name}`;
+        this.label = `Goal ${goalNumber}: ${goalData[goalNumber - 1]}`;
       }
     }
+      
   }
 
-  render() {/*This activates only if the colorOnly is set as true causing the color box to appear */
-    if (this.colorOnly) {
-      getColor()
+  render() {//This activates only if the colorOnly is set as true causing the color box to appear 
+    const goalNumber = parseInt(this.goals);
+    if (this.goals === 'circle') {
+      let _imgsrc = new URL(`../lib/svgs/${this.goals}.png`,import.meta.url).href;
       
     }
-    
-    this._imgsrc = new URL(
-      `../lib/svgs/goal${this.goals}.svg`,
-      import.meta.url
-    ).href;
-    this.alt=`Goal ${goalNumber}: ${goalData[goalNumber - 1].name}`;
-/*This renders the page-allows the images to appear and allows for alt text loading is set as lazy and fetch priority as low */
+    else if(this.goals === 'all'){
+      let _imgsrc = new URL(`../lib/svgs/${this.goals}.svg`,import.meta.url).href;
+    }
+    else{
+      let _imgsrc = new URL(`../lib/svgs/goal${this.goals}.svg`,import.meta.url).href;
+      const color = goalData[goalNumber - 1].color;
+    }
+//This renders the page-allows the images to appear and allows for alt text loading is set as lazy and fetch priority as low 
+    if (this.colorOnly) {
+      return html`
+      <div class="color-only" style="background-color: var(--sg-goals-${this.goals});"></div>
+      `;
+    }
+    else{
     return html`
     <img
-      src="${this._imgsrc}"
-      alt="${this.label || this.alt}"
-      loading="lazy"
-      fetchpriority="low"
+      src="${_imgsrc}"
+      alt="${this.label}"
+      loading="${this.loading}"
+      fetchpriority="${this.fetchpriority}"
     />`;
+    }
   }
 
-  /**
-   * haxProperties integration via file reference
-   */
+  //haxProperties integration via file reference
   static get haxProperties() {
     return new URL(`../lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
@@ -153,3 +176,4 @@ export class sustainableGoals extends DDDSuper(LitElement) {
 }
 
 globalThis.customElements.define(sustainableGoals.tag, sustainableGoals);
+
