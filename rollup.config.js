@@ -25,7 +25,7 @@ export default {
     /**Allows images to load on web */
     copy({
       targets: [
-        { src: 'lib/', dest: 'dist' }
+        { src: 'lib/', dest: 'public' }
       ]
     }),
     /** Resolve bare module imports */
