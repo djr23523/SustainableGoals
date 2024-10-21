@@ -48,6 +48,16 @@
             },
             {
               "kind": "field",
+              "name": "imgsrc",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "privacy": "public",
+              "attribute": "imgsrc"
+            },
+            {
+              "kind": "field",
               "name": "colorOnly",
               "type": {
                 "text": "boolean"
@@ -86,6 +96,10 @@
             {
               "name": "color-only",
               "fieldName": "colorOnly"
+            },
+            {
+              "name": "imgsrc",
+              "fieldName": "imgsrc"
             },
             {
               "name": "label",

@@ -15,6 +15,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     super();
     this.goals="1";
     this.label="";
+    this.imgsrc="";
     this.colorOnly=false;
     this.loading="lazy";
     this.fetchpriority="low";
@@ -24,6 +25,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     return {
       goals: {type: String, reflect: true},
       colorOnly: {type: Boolean, attribute: "color-only", reflect: true},
+      imgsrc: {type:String},
       label: {type:String},
       loading: {type: String},
       fetchpriority: {type: String}
@@ -130,7 +132,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
         this.label = `Goal ${goalNumber}: ${goalData[goalNumber - 1]}`;
       }
     }
-      
+      this.imgsrc=_imgsrc
   }
 
   render() {//This activates only if the colorOnly is set as true causing the color box to appear 
@@ -143,7 +145,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     else if(this.goals === 'all'){
       _imgsrc = new URL(`../lib/svgs/${this.goals}.svg`,import.meta.url).href;
     }
-    
+    this.imgsrc=_imgsrc
 //This renders the page-allows the images to appear and allows for alt text loading is set as lazy and fetch priority as low 
     if (this.colorOnly) {
       return html`
@@ -153,7 +155,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
     else{
     return html`
     <img
-      src="${_imgsrc}"
+      src="${this.imgsrc}"
       alt="${this.label}"
       loading="${this.loading}"
       fetchpriority="${this.fetchpriority}"

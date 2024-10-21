@@ -39,15 +39,8 @@
 
 <body>
   <h1>Sustainable Goals</h1>
-  <script>
-    document.querySelector('#Change-Goals').addEventListener('click', function(event) {
-      const randomNumber = Math.floor(Math.random() * 17) + 1; 
-      const sdg = document.getElementById('change');
-      sdg.setAttribute('goals', randomNumber);
-    });
-  </script>
   <sustainable-goals id="change" goals="2"></sustainable-goals>
-  <button id="Change-Goals">Change Goal</button>
+  <button id="Change-Goals" onclick="document.getElementById('change').setAttribute('goals', Math.floor(Math.random() * 17) + 1)">Change Goal</button>
     
     
   <h1>All Goals including circle and all</h1>
