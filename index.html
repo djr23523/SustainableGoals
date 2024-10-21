@@ -36,29 +36,25 @@
 <body>
   <div id="app"></div>
     <button id="Change-Goals">Change Goal</button>
-
+    <sustainable-goals goal="1" ></sustainable-goals>
+    <sustainable-goals goal = "2"></sustainable-goals>
+    <sustainable-goals goal="3"></sustainable-goals>
+    <sustainable-goals goal="4"></sustainable-goals>
+    <sustainable-goals goal="5"></sustainable-goals>
+    <sustainable-goals goal="6"></sustainable-goals>
+    <sustainable-goals goal="7"></sustainable-goals>
+    <sustainable-goals goal="8"></sustainable-goals>
+    <sustainable-goals goal="9"></sustainable-goals>
+    <sustainable-goals goal="10"></sustainable-goals>
+    <sustainable-goals goal="11"></sustainable-goals>
+    <sustainable-goals goal="12"></sustainable-goals>
+    <sustainable-goals goal="13"></sustainable-goals>
+    <sustainable-goals goal="14"></sustainable-goals>
+    <sustainable-goals goal="15"></sustainable-goals>
+    <sustainable-goals goal="16"></sustainable-goals>
+    <sustainable-goals goal="17"></sustainable-goals>
     <script>
-      const app = document.querySelector('#app');
-      // Create all 17 goals + circle and "all"
-      for (let i = 1; i <= 17; i++) {
-        const sdg = document.createElement('sustainable-goals');
-        sdg.goal = i.toString();
-        app.appendChild(sdg);
-      }
-
-      const circleSDG = document.createElement('sustainable-goals');
-      circleSDG.goal = 'circle';
-      app.appendChild(circleSDG);
-
-      const allSDG = document.createElement('sustainable-goals');
-      allSDG.goal = 'all';
-      app.appendChild(allSDG);
-
-      // Demonstrate color-only option
-      const colorOnlySDG = document.createElement('sustainable-goals');
-      colorOnlySDG.goal = '1';
-      colorOnlySDG.colorOnly = true;
-      app.appendChild(colorOnlySDG);
+      
 
       // Add a button to change the goal of the first element
       const changeGoalButton = document.querySelector('#Change-Goals');
