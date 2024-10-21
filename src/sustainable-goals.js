@@ -74,15 +74,10 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       this.updateGoalImage();
     }
   }
-  getColor(){
-    const goalNumber = parseInt(this.goals);
-    if (goalNumber >= 1 && goalNumber <= 17) {
-      const color = goalData[goalNumber - 1].color;
-      return color;
-    }
-  }
+  
 //This method activates only if the updated method's parameter has goal in it 
   updateGoalImage() {
+    let _imgsrc;
     //Only activates if the goal has all or circle in it, so only for those two cases 
     const goalData = [
       'No Poverty',
@@ -104,8 +99,8 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       'Partnerships for the Goals',
     ];
     if (this.goals === 'all') {
-      let _imgsrc = new URL(
-        `../lib/svgs/goal${this.goals}.svg`,
+      _imgsrc = new URL(
+        `../lib/svgs/${this.goals}.svg`,
         import.meta.url
       ).href;
       this.label =
@@ -114,7 +109,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
           : 'Sustainable Development Goals Circle';
     
     } 
-    else if(this.goals==='circle'){
+    else if(this.goals ==='circle'){
       _imgsrc = new URL(
         `../lib/svgs/circle.png`,
         import.meta.url
@@ -129,7 +124,7 @@ export class sustainableGoals extends DDDSuper(LitElement) {
       const goalNumber = parseInt(this.goals);
       if (goalNumber >= 1 && goalNumber <= 17) {
         _imgsrc = new URL(
-          `../lib/svgs/goal${goalNumber}.svg`,
+          `../lib/svgs/goal${this.goals}.svg`,
           import.meta.url
         ).href;
         this.label = `Goal ${goalNumber}: ${goalData[goalNumber - 1]}`;
@@ -139,18 +134,16 @@ export class sustainableGoals extends DDDSuper(LitElement) {
   }
 
   render() {//This activates only if the colorOnly is set as true causing the color box to appear 
-    const goalNumber = parseInt(this.goals);
+    
+    let _imgsrc = new URL(`../lib/svgs/goal${this.goals}.svg`,import.meta.url).href;
     if (this.goals === 'circle') {
-      let _imgsrc = new URL(`../lib/svgs/${this.goals}.png`,import.meta.url).href;
+       _imgsrc= new URL(`../lib/svgs/${this.goals}.png`,import.meta.url).href;
       
     }
     else if(this.goals === 'all'){
-      let _imgsrc = new URL(`../lib/svgs/${this.goals}.svg`,import.meta.url).href;
+      _imgsrc = new URL(`../lib/svgs/${this.goals}.svg`,import.meta.url).href;
     }
-    else{
-      let _imgsrc = new URL(`../lib/svgs/goal${this.goals}.svg`,import.meta.url).href;
-      const color = goalData[goalNumber - 1].color;
-    }
+    
 //This renders the page-allows the images to appear and allows for alt text loading is set as lazy and fetch priority as low 
     if (this.colorOnly) {
       return html`
